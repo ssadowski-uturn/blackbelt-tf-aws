@@ -1,0 +1,15 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      java: corretto11
+  pre_build:
+    commands:
+      - terraform plan
+  build:
+    commands:
+      - terraform apply -auto-approve
+  post_build:
+    commands:
+      - echo Terraform applied on `date`
